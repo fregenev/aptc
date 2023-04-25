@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Program Page
+{% endblock %}
+
+{% block content %}
+
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <!-- <th scope="col">ID</th> -->
+            <th scope="col">Program Name</th>
+            <th scope="col">Code</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for course in courses %}
+            <tr>
+                <!-- <td>{{ course.id }}</td> -->
+                <td>{{ course.name }}</td>
+                <td>{{ course.code }}</td>
+                <td>{{ course.duration }}</td>
+                <td>{{ course.description }}</td>
+                <td>{{ course.price }}N</td>
+                <td>
+                    <button class="btn btn-outline btn-info">More Info</button>
+                    <button class="btn btn-outline btn-success">Apply for this Program</button>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
