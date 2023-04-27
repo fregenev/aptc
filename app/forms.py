@@ -27,7 +27,7 @@ class ApplyForm(FlaskForm):
     email_address = StringField(label='Email Address:', validators=[Email(),DataRequired()])
     password1 = PasswordField(label='Password:', validators=[Length(min=6), DataRequired()])
     password2 = PasswordField(label='Confirn Password:', validators=[EqualTo('password1'), DataRequired()])
-    program_apply = SelectField(label='Program Apply:', choices=[('Python', 'Python programming'), ('DE', 'Data Engineering'),('ML', 'Machine Learning'), ('Webapp', 'Web Application Development with Python'), ('WebDesign', 'Web Design')], validators=[Length(min=2,max=30), DataRequired()])
+    program_apply = SelectField(label='Program Apply:', choices=[('Python', 'Python programming'), ('DE', 'Data Engineering'),('ML', 'Machine Learning'), ('WA', 'Web Application Development with Python'), ('WD', 'Web Design')], validators=[Length(min=2,max=30), DataRequired()])
     start_date = DateField(label='Start Date:', validators=[DataRequired()])
     submit = SubmitField(label='Create Account and Apply')
 

@@ -39,16 +39,45 @@ def apply_page():
 
         login_user(user_to_create)
         flash(f"Account created successfully! You are now logged in as {user_to_create.username}", category='success')
-        return redirect(url_for('after_apply_page'))
+        if form.program_apply.data == 'Python':
+            return redirect(url_for('python_page'))
+        elif form.program_apply.data == 'DE':
+            return redirect(url_for('data_engineering_page'))
+        elif form.program_apply.data == 'WD':
+            return redirect(url_for('web_design_page'))
+        elif form.program_apply.data == 'WA':
+            return redirect(url_for('web_application_page'))
+        else:
+            return redirect(url_for('machine_learning_page'))    
     if form.errors != {}:
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}', category='danger')
     return render_template('apply.html', form=form)
 
-@app.route("/after_apply")
+@app.route("/python")
 @login_required
-def after_apply_page():
-    return render_template('after_apply.html')
+def python_page():
+    return render_template('python.html')
+
+@app.route("/data_engineering")
+@login_required
+def data_engineering_page():
+    return render_template('data_engineering.html')
+
+@app.route("/web_design")
+@login_required
+def web_design_page():
+    return render_template('web_design.html')
+
+@app.route("/web_application")
+@login_required
+def web_application_page():
+    return render_template('web_application.html')
+
+@app.route("/machine_learning")
+@login_required
+def machine_learning_page():
+    return render_template('machine_learning.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
@@ -60,7 +89,16 @@ def login_page():
         ):
             login_user(attempted_user)
             flash(f'Success! You are logged in as: {attempted_user.username}', category='success')
-            return redirect(url_for('after_apply_page'))
+            if attempted_user.program_apply == 'Python':
+                return redirect(url_for('python_page'))
+            elif attempted_user.program_apply == 'DE':
+                return redirect(url_for('data_engineering_page'))
+            elif attempted_user.program_apply == 'WD':
+                return redirect(url_for('web_design_page'))
+            elif attempted_user.program_apply == 'WA':
+                return redirect(url_for('web_application_page'))
+            else:
+                return redirect(url_for('machine_learning_page'))
         else:
             flash('Usename and password are not match! Please try again', category='danger')
     return render_template('login.html', form=form)
