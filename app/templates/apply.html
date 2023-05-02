@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}
+    Apply Page
+{% endblock %}
+{% block content %}
+<body class="text-center">
+    <div class="container">
+        <form method="POST" class="form-apply" style="color: white;">
+            {{ form.hidden_tag() }}
+            <img class="mb-4" src="../static/apply now.png" alt="" style="width: 5%; border-radius: 60px" >
+                <h1 class="h3 mb-3 font-weight-normal">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Create your Account and Apply
+            </h1>
+            <br>
+            {{ form.name.label() }}
+            {{ form.name(class="form-control", placeholder="Name") }}
+
+            {{ form.street.label() }}
+            {{ form.street(class="form-control", placeholder="Street") }}
+
+            {{ form.city.label() }}
+            {{ form.city(class="form-control", placeholder="City") }}
+
+            {{ form.lga.label() }}
+            {{ form.lga(class="form-control", placeholder="Local Government Area") }}
+
+            {{ form.state.label() }}
+            {{ form.state(class="form-control", placeholder="State") }}
+
+            {{ form.country.label() }}
+            {{ form.country(class="form-control", placeholder="Country") }}
+
+            {{ form.qualification.label() }}
+            {{ form.qualification(class="form-control", placeholder="Select your academic qualification") }}
+
+            {{ form.subject_area.label() }}
+            {{ form.subject_area(class="form-control", placeholder="Science or Arts") }}
+
+            {{ form.username.label() }}
+            {{ form.username(class="form-control", placeholder="User name") }}
+
+            {{ form.email_address.label() }}
+            {{ form.email_address(class="form-control", placeholder="Email Address") }}
+
+            {{ form.password1.label() }}
+            {{ form.password1(class="form-control", placeholder="Password") }}
+
+            {{ form.password2.label() }}
+            {{ form.password2(class="form-control", placeholder="Confirm Password") }}
+
+            {{ form.program_apply.label() }}
+            {{ form.program_apply(class="form-control", placeholder="Python or Web Application Development or Data Engineer, or Machine Learning") }}
+
+            {{ form.start_date.label() }}
+            {{ form.start_date(class="form-control", placeholder="dd/mm/yyyy") }}
+
+            <br>
+
+            <div class="checkbox mb-3">
+                <h6>Already have an account?</h6>
+                <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Login</a>
+             </div>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        </form>
+    </div>
+</body>
+    
+{% endblock %}
